@@ -1,6 +1,8 @@
-function Cart() {
+function Cart({cart}) {
   return (
-    <div>Cart</div>
+    <div> 
+    {cart.map(item =><div>{item.product.name}----{item.product.description}----{item.quantity}</div>)}
+    </div>
   )
 }
 

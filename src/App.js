@@ -10,8 +10,9 @@ import SingleProduct from "./components/SingleProduct";
 
 function App() {
     const [products, setProducts] = useState([])
-    
-    
+    const [cart, setCart] = useState([])
+    const [session, setSession] = useState(localStorage.getItem('session'))
+
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
@@ -23,8 +24,14 @@ function App() {
        
     }, [])
 
+    useEffect(() => {
+        // fetch("https://shopping-k6qe.onrender.com/cart")
+        axios.get("http://localhost:8000/cart/")
+            .then((response) => setCart(response.data))
+        console.log('use effect called!')
+    }, [])
 
-    const [session, setSession] = useState(localStorage.getItem('session'))
+
     // this function logs the user in
     function login(user, pass) {    
         axios.post('http://localhost:8000/login/', {
@@ -73,8 +80,8 @@ function App() {
                     <Header logout={logout} />
                     <Routes>
                         <Route path="/products" element={<Products products={products} />} />
-                        <Route path="/product/:id" element={<SingleProduct products={products} />} />
-                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/product/:id" element={<SingleProduct products={products} />} />   
+                        <Route path="/cart" element={<Cart cart={cart}/>} />
                         <Route path="/logout" element={<Cart />} />
                         <Route path="/login" element={<LoginPage login={login} />} />
                     </Routes>
