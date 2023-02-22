@@ -5,21 +5,26 @@ import Cart from "./components/Cart";
 import Header from "./components/Header";
 import LoginPage from "./components/LoginPage";
 import Products from "./components/Products";
+import SingleProduct from "./components/SingleProduct";
+
 
 function App() {
     const [products, setProducts] = useState([])
-    const [session, setSession] = useState(localStorage.getItem('session'))
-
+    
+    
     axios.defaults.withCredentials = true;
 
-
     useEffect(() => {
+       
         // fetch("https://shopping-k6qe.onrender.com/products")
         axios.get("http://localhost:8000/products/")
             .then((response) => setProducts(response.data))
         console.log('use effect called!')
+       
     }, [])
 
+
+    const [session, setSession] = useState(localStorage.getItem('session'))
     // this function logs the user in
     function login(user, pass) {    
         axios.post('http://localhost:8000/login/', {
@@ -67,8 +72,8 @@ function App() {
                 {session? <h2>Hello {session}</h2> : 'please login'}
                     <Header logout={logout} />
                     <Routes>
-                        <Route path="/" element={
-                            <Products products={products} />} />
+                        <Route path="/products" element={<Products products={products} />} />
+                        <Route path="/product/:id" element={<SingleProduct products={products} />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/logout" element={<Cart />} />
                         <Route path="/login" element={<LoginPage login={login} />} />
