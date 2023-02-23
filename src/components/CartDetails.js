@@ -1,10 +1,10 @@
 import React from 'react'
 import { Alert } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
-import {useParams} from 'react-router-dom';
-import axios from "axios";
-import { useState, useEffect } from "react";
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 
 function CartDetails( {item} ){
 
@@ -18,16 +18,28 @@ function CartDetails( {item} ){
     console.warn(res)}
 
     return (
-    <div>
-        <h3>{item.id}</h3>
-        <p>{item.product.name}</p>
-        <Alert key="info">{item.product.price}</Alert>
-        <h3>{item.product.description}</h3>
-        <img src={'http://localhost:8000/static'+item.product.image} alt={item.product.name}/>
-        <Button variant='danger' onClick={()=>deleteHandler(item.id)} className="btn btn-danger btn-sm">Delete</Button>
-    </div>
-    )
-    }   
+        <>
+        return (
+            <Row xs={1} md={2} className="g-4">
+              {Array.from({ length: 1 }).map((_, idx) => (
+                <Col>
+                  <Card>
+                    <Card.Img variant="top" src={'http://localhost:8000/static'+item.product.image} alt={item.product.name} />
+                    <Card.Body>
+                      <Card.Title>{item.product.name}</Card.Title>
+                      <Card.Text>
+                      {item.product.description}
+                        <Button variant='danger' onClick={()=>deleteHandler(item.id)} className="btn btn-danger btn-sm">Delete</Button>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+            </>
+          );
+        }
+    
 export default CartDetails
 
 
