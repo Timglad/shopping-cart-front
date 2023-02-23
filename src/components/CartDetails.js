@@ -22,7 +22,8 @@ function CartDetails( {item} ){
     };
     return (
         <>
-        
+        <br/>
+        <br/>
             <Row xs={1} md={2} className="g-4">
               {Array.from({ length: 1 }).map((_, idx) => (
                 <Col>
