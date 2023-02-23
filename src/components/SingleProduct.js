@@ -2,6 +2,9 @@ import React from 'react'
 import axios from "axios";
 import { useParams, Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const SingleProduct = ({ products }) => {
     const handleAddToCart = () => {
@@ -31,22 +34,39 @@ const SingleProduct = ({ products }) => {
         return <div>Could'nt fetch product</div>;
     }
     return (
-        <div >
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            {/* <img src={'https://shopping-k6qe.onrender.com/static'+product.image} alt={product.name}/> */}
-            <img src={'http://localhost:8000/static' + product.image} alt={product.name} />
+
+      <div>
+    <Row xs={1} md={2} className="g-4">
+    {Array.from({ length: 1 }).map((_, idx) => (
+      <Col>
+        <Card>
+          <Card.Img variant="top" src={'http://localhost:8000/static' + product.image} alt={product.name} />
+          <Card.Body>
+            <Card.Title>{product.name}</Card.Title>
+            <Card.Text>
+            {product.description}
+            </Card.Text>
             <Button variant='warning' onClick={handleAddToCart}>Add to cart</Button>
-            <Link to={`/products`}>
-                <Button variant='primary'>Return to products</Button>
-            </Link>
-            <Link to={`/editproduct/${id}`}>
-                <Button variant='success'>Edit</Button>
-            </Link>
-            <Button variant='danger' onClick={handleRemoveProduct}>Delete</Button>
-            
-        </div>
-    )
+      <Link to={`/products`}>
+          <Button variant='primary'>Return to products</Button>
+      </Link>
+      <Link to={`/editproduct/${id}`}>
+          <Button variant='success'>Edit</Button>
+      </Link>
+      <Button variant='danger' onClick={handleRemoveProduct}>Delete</Button>
+          </Card.Body>
+        </Card>
+      </Col>
+    ))}
+  </Row>
+  </div>
+
+
+
+    
+)
 }
+
+       
 
 export default SingleProduct

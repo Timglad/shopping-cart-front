@@ -1,8 +1,9 @@
-import { Alert } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import axios from "axios";
-
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 
 
@@ -20,17 +21,29 @@ function Product({product}) {
   };
   return (
     <div>
-        <h3>{product.name}</h3>
-        <p>{product.description}</p>
-        <Alert key="info">{product.price}</Alert>
-        {/* <img src={'https://shopping-k6qe.onrender.com/static'+product.image} alt={product.name}/> */}
-        <img src={'http://localhost:8000/static'+product.image} alt={product.name}/>
-        <Button variant="warning" onClick={handleAddToCart}>Add to cart</Button>
+    <Row xs={1} md={2} className="g-4">
+    {Array.from({ length: 1 }).map((_, idx) => (
+      <Col>
+        <Card>
+          <Card.Img variant="top" src={'http://localhost:8000/static' + product.image} alt={product.name} />
+          <Card.Body>
+            <Card.Title>{product.name}</Card.Title>
+            <Card.Text>
+            {product.description}
+            </Card.Text>
+            <Button variant="warning" onClick={handleAddToCart}>Add to cart</Button>
         <Link to={`/product/${product.id}`}>
         <Button variant="primary">View</Button>
         </Link>
-    </div>
-  )
-}
+          </Card.Body>
+        </Card>
+      </Col>
+    ))}
+  </Row>
+  </div>
+
+  )}
+
+    
 
 export default Product

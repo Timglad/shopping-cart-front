@@ -10,9 +10,6 @@ function EditProduct  ( {products} )  {
             name: newName,
             description: newDescription,
             price: newPrice
-
-
-
         } )
     };
     const { id } = useParams();
