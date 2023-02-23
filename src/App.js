@@ -2,10 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Cart from "./components/Cart";
+import CartDetails from "./components/CartDetails";
 import Header from "./components/Header";
 import LoginPage from "./components/LoginPage";
 import Products from "./components/Products";
 import SingleProduct from "./components/SingleProduct";
+
 
 
 function App() {
@@ -15,18 +17,17 @@ function App() {
 
     axios.defaults.withCredentials = true;
 
+
+
+
     useEffect(() => {
-       
-        // fetch("https://shopping-k6qe.onrender.com/products")
         axios.get("http://localhost:8000/products/")
             .then((response) => setProducts(response.data))
         console.log('use effect called!')
-       
     }, [])
 
     useEffect(() => {
-        // fetch("https://shopping-k6qe.onrender.com/cart")
-        axios.get("http://localhost:8000/cart/")
+        axios.get(`http://localhost:8000/cart/`)
             .then((response) => setCart(response.data))
         console.log('use effect called!')
     }, [])
@@ -81,7 +82,8 @@ function App() {
                     <Routes>
                         <Route path="/products" element={<Products products={products} />} />
                         <Route path="/product/:id" element={<SingleProduct products={products} />} />   
-                        <Route path="/cart" element={<Cart cart={cart}/>} />
+                        <Route path="/cart" element={<Cart cart={cart} />}/>
+                        <Route path="/cart/:id" element={<CartDetails cart={cart}/>}/>
                         <Route path="/logout" element={<Cart />} />
                         <Route path="/login" element={<LoginPage login={login} />} />
                     </Routes>
