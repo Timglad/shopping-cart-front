@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 
-function CartDetails( {item} ){
+const CartDetails=( {item} ) => {
 
 
     console.log(item)
@@ -31,6 +31,7 @@ function CartDetails( {item} ){
                     <Card.Img variant="top" src={'http://localhost:8000/static'+item.product.image} alt={item.product.name} />
                     <Card.Body>
                       <Card.Title>{item.product.name}</Card.Title>
+                      <Card.Title>{item.product.price}</Card.Title>
                       <Card.Text>
                       {item.product.description}
                         <Button variant='danger' onClick={()=>handleRemoveitem(item.id)} className="btn btn-danger btn-sm">Delete</Button>
@@ -43,7 +44,6 @@ function CartDetails( {item} ){
             </>
           );
         }
-    
 export default CartDetails
 
 

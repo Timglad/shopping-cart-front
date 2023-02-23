@@ -11,7 +11,6 @@ import EditProduct from "./components/EditProduct";
 import AddProduct from "./components/AddProduct";
 
 
-
 function App() {
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([])
@@ -20,13 +19,12 @@ function App() {
     axios.defaults.withCredentials = true;
 
 
-
-
     useEffect(() => {
         axios.get("http://localhost:8000/products/")
             .then((response) => setProducts(response.data))
         console.log('use effect called!')
     }, [])
+
 
     useEffect(() => {
         axios.get(`http://localhost:8000/cart/`)
@@ -67,8 +65,6 @@ function App() {
             });
     }
     function logout() {
-
-        // fetch("https://shopping-k6qe.onrender.com/products")
         axios.get("http://localhost:8000/logout/")
         setSession(null)
         localStorage.removeItem('session')
@@ -78,8 +74,8 @@ function App() {
         <div className="App">
             <BrowserRouter>
 
-                <h1>My Cart Application</h1>
-                {session? <h2>Hello {session}</h2> : 'please login'}
+                <h1>My Shop</h1>
+                {session? <h2>Hello {session}</h2> : "Welcome Back"}
                     <Header logout={logout} />
                     <Routes>
                         <Route path="/products" element={<Products products={products} />} />

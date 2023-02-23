@@ -18,6 +18,7 @@ const SingleProduct = ({ products }) => {
                 console.error(error);
             });
     };
+    
     const handleRemoveProduct = () => {
         axios.delete(`http://localhost:8000/product/` + id + "/")
             .then((response) => {
@@ -28,7 +29,9 @@ const SingleProduct = ({ products }) => {
                 console.error(error);
             });
     };
+    
     const { id } = useParams();
+    
     const product = products.find((p) => p.id === parseInt(id));
     if (!product) {
         return <div>Could'nt fetch product</div>;
@@ -43,6 +46,7 @@ const SingleProduct = ({ products }) => {
           <Card.Img variant="top" src={'http://localhost:8000/static' + product.image} alt={product.name} />
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
+            <Card.Title>{product.price}</Card.Title>
             <Card.Text>
             {product.description}
             </Card.Text>
@@ -60,13 +64,6 @@ const SingleProduct = ({ products }) => {
     ))}
   </Row>
   </div>
-
-
-
-    
 )
 }
-
-       
-
 export default SingleProduct

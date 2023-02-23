@@ -2,21 +2,16 @@ import axios from "axios";
 import { useParams} from 'react-router-dom';
 import { useState } from "react";
 
-
-
 function EditProduct  ( {products} )  {
     const handleEditProduct = () => {
         axios.put(`http://127.0.0.1:8000/product/` + id + '/', {
             name: newName,
             description: newDescription,
             price: newPrice
-
-
-
         } )
     };
+    
     const { id } = useParams();
-
 
     const [newName , setName] = useState('');
     const newNameHandler = (e) => {
@@ -27,6 +22,7 @@ function EditProduct  ( {products} )  {
     const newDescriptionHandler = (e) => {
         setDescription(e.target.value);
     };
+    
     const [newPrice , setPrice] = useState('');
     const newPriceHandler = (e) => {
         setPrice(e.target.value);

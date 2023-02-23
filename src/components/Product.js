@@ -29,6 +29,7 @@ function Product({product}) {
           <Card.Img variant="top" src={'http://localhost:8000/static' + product.image} alt={product.name} />
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
+            <Card.Title>{product.price}</Card.Title>
             <Card.Text>
             {product.description}
             </Card.Text>
