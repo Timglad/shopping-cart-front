@@ -83,10 +83,18 @@ function App() {
                     <Header logout={logout} />
                     <Routes>
                         <Route path="/products" element={<Products products={products} />} />
+<<<<<<< HEAD
                         <Route path="/product/:id" element={<SingleProduct products={products} />} /> 
                         <Route path="/editproduct/:id" element={<EditProduct products={products} />} />
                         <Route path="/addproduct" element={<AddProduct products={products} />} />          
                         <Route path="/cart" element={<Cart cart={cart}/>} />
+=======
+                        <Route path="/product/:id" element={<SingleProduct products={products} />} />   
+                        <Route path="/cart" element={<Cart cart={cart} />}/>
+                        <Route path="/cart/:id" element={<CartDetails cart={cart}/>}/>
+                        <Route path="/editproduct/:id" element={<EditProduct products={products} />} />
+                        <Route path="/addproduct" element={<AddProduct products={products} />} />          
+>>>>>>> 3859beaba8610c693f7e62c74ab9d40a2831b964
                         <Route path="/logout" element={<Cart />} />
                         <Route path="/login" element={<LoginPage login={login} />} />
                     </Routes>

@@ -1,23 +1,32 @@
 import React from 'react'
 import { Alert } from "react-bootstrap"
 import Button from 'react-bootstrap/Button';
+<<<<<<< HEAD
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 
 function CartDetails( {item} ){
+=======
+import axios from "axios";
+>>>>>>> 3859beaba8610c693f7e62c74ab9d40a2831b964
 
 
-    async function deleteHandler(id){
-        let res=await fetch("http://localhost:8000/cart/"+id,{
-        method : 'DELETE'
-    });
-    res = await res.json();
-    
-    console.warn(res)}
+const CartDetails = ({ item }) => {
+    console.log(item)
+    const handleRemoveitem = () => {
+        axios.delete(`http://localhost:8000/cart/` + item.id + "/")
+            .then((response) => {
+                console.log(response);
 
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
     return (
+<<<<<<< HEAD
         <>
         return (
             <Row xs={1} md={2} className="g-4">
@@ -40,6 +49,18 @@ function CartDetails( {item} ){
           );
         }
     
+=======
+        <div>
+            <h3>{item.id}</h3>
+            <p>{item.product.name}</p>
+            <Alert key="info">{item.product.price}</Alert>
+            <h3>{item.product.description}</h3>
+            <img src={'http://localhost:8000/static' + item.product.image} alt={item.product.name} />
+            <Button variant='danger' onClick={handleRemoveitem} className="btn btn-danger btn-sm">Delete</Button>
+        </div>
+    )
+}
+>>>>>>> 3859beaba8610c693f7e62c74ab9d40a2831b964
 export default CartDetails
 
 
