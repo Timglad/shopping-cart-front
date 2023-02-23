@@ -5,7 +5,6 @@ import axios from "axios";
 
 
 const CartDetails = ({ item }) => {
-    console.log(item)
     const handleRemoveitem = () => {
         axios.delete(`http://localhost:8000/cart/` + item.id + "/")
             .then((response) => {
@@ -22,6 +21,7 @@ const CartDetails = ({ item }) => {
             <p>{item.product.name}</p>
             <Alert key="info">{item.product.price}</Alert>
             <h3>{item.product.description}</h3>
+            <h3>{item.quantity}</h3>
             <img src={'http://localhost:8000/static' + item.product.image} alt={item.product.name} />
             <Button variant='danger' onClick={handleRemoveitem} className="btn btn-danger btn-sm">Delete</Button>
         </div>
