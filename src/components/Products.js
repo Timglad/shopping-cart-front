@@ -1,7 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap"
 import Product from "./Product"
 
-
 function Products({products}) {
   return (
     <div>
@@ -14,5 +13,4 @@ function Products({products}) {
     </div>
   )
 }
-
 export default Products

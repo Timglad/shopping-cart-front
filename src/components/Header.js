@@ -27,14 +27,9 @@ function Header({ logout }) {
         <Nav.Link as={Link} onClick={logout} to="/"><h2>Logout</h2></Nav.Link>
         </Nav.Item>
 
-
       </Nav>
     </Container>
   </Navbar>
-  
-    
-    
   )
 }
-
 export default Header
