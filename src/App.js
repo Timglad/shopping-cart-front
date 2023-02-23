@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import LoginPage from "./components/LoginPage";
 import Products from "./components/Products";
 import SingleProduct from "./components/SingleProduct";
+import EditProduct from "./components/EditProduct";
+import AddProduct from "./components/AddProduct";
 
 
 function App() {
@@ -80,7 +82,9 @@ function App() {
                     <Header logout={logout} />
                     <Routes>
                         <Route path="/products" element={<Products products={products} />} />
-                        <Route path="/product/:id" element={<SingleProduct products={products} />} />   
+                        <Route path="/product/:id" element={<SingleProduct products={products} />} /> 
+                        <Route path="/editproduct/:id" element={<EditProduct products={products} />} />
+                        <Route path="/addproduct" element={<AddProduct products={products} />} />          
                         <Route path="/cart" element={<Cart cart={cart}/>} />
                         <Route path="/logout" element={<Cart />} />
                         <Route path="/login" element={<LoginPage login={login} />} />

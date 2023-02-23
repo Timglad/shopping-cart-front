@@ -40,7 +40,11 @@ const SingleProduct = ({ products }) => {
             <Link to={`/products`}>
                 <Button variant='primary'>Return to products</Button>
             </Link>
+            <Link to={`/editproduct/${id}`}>
+                <Button variant='success'>Edit</Button>
+            </Link>
             <Button variant='danger' onClick={handleRemoveProduct}>Delete</Button>
+            
         </div>
     )
 }
