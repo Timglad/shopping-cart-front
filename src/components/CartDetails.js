@@ -3,8 +3,6 @@ import Button from 'react-bootstrap/Button';
 import { Col, Row } from "react-bootstrap"
 import Card from 'react-bootstrap/Card';
 import axios from "axios";
-import { useState } from "react";
-import "./CartDetails.css"
 
 const CartDetails = ({ item }) => {
     const handleRemoveitem = () => {
@@ -17,24 +15,9 @@ const CartDetails = ({ item }) => {
                 console.error(error);
             });
     };
-    const handleQuantitySet = () => {
-        axios.put(`http://127.0.0.1:8000/cart/` + item.id + '/', {
-            quantity: newQuantity
-        })
-            .then((response) => {
-                console.log(response);
-
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-
-    };
-    }
+    
     return (
         <>
-        <br/>
-        <br/>
             <Row xs={1} md={2} className="g-4">
               {Array.from({ length: 1 }).map((_, idx) => (
                 <Col>
@@ -54,7 +37,5 @@ const CartDetails = ({ item }) => {
             </Row>
             </>
           );
-        
+              }
 export default CartDetails
-
-

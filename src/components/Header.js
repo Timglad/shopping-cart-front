@@ -16,6 +16,10 @@ function Header({ logout }) {
         </Nav.Item>
 
         <Nav.Item>
+        <Nav.Link as={Link} to="/addproduct"><h2>New Product</h2></Nav.Link>
+        </Nav.Item>
+
+        <Nav.Item>
         <Nav.Link as={Link} to="/cart"><h2>Cart</h2></Nav.Link>
         </Nav.Item>
 
